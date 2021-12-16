@@ -1,25 +1,42 @@
-<article class="border border-solid border-gray-400 rounded-md overflow-hidden">
-  <div class="bg-green-200 pt-4 pb-10 relative">
-    <img
-      class="max-w-full m-auto mt-4 mb-10"
-      src="/images/{{this.image}}.png"
-      alt=""
-    />
-    <div
-      class="absolute bottom-4 right-4 bg-blue-400 text-white px-3 py-1 rounded-full"
-    >
+<article class='border border-solid border-gray-400 rounded-md overflow-hidden'>
+  <div class='bg-green-200 pt-4 pb-10 relative'>
+    <img class='max-w-full m-auto mt-4 mb-10' src='/images/{{this.image}}.png' alt='' />
+    <div class='absolute bottom-4 right-4 bg-blue-400 text-white px-3 py-1 rounded-full'>
       {{this.currency}}
       {{this.price}}
       {{#if this.sale}}
-        <span>on sale</span>
+      <span>on sale</span>
       {{/if}}
     </div>
   </div>
-  <div class="pt-4 pb-2 px-4 flex flex-col gap-y-1">
-    <p class="text-xs text-green-400">{{this.duration}}</p>
-    <a href="/course/{{this._id}}">
-      <h2 class="text-2xl font-bold">{{this.title}}</h2>
-    </a>
-    <p class="text-base">{{this.description}}</p>
+  <div class='pt-4 pb-2 px-4 flex'>
+    <div class="flex flex-col col-y-1 flex-grow">
+      <p class='text-xs text-green-400'>{{this.duration}}</p>
+      <a href='/course/{{this._id}}'>
+        <h2 class='text-2xl font-bold'>{{this.title}}</h2>
+      </a>
+      <p class='text-base'>{{this.description}}</p>
+      <form method='post' action='/course/{{this._id}}/delete'>
+        <button type='submit'>delete</button>
+      </form>
+    </div>
+    <div class="flex items-center">
+      <form method="post" action="/course/{{this._id}}/favorite">
+        <button type="submit">
+          {{#if this.isFavorite}}
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd"
+              d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+              clip-rule="evenodd" />
+          </svg>
+          {{else}}
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+          {{/if}}
+        </button>
+      </form>
+    </div>
   </div>
 </article>

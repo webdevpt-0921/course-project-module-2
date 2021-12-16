@@ -11,4 +11,4 @@ function stopDB() {
   return mongoose.connection.close();
 }
 
-module.exports = { startDB, stopDB };
+module.exports = { startDB, stopDB, MONGO_URI };

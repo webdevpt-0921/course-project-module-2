@@ -1,0 +1,78 @@
+<div class='container px-4 m-auto'>
+  <header class='flex items-center w-full mt-2 mb-3'>
+    <div class='flex-grow'>
+      <p class='font-sans text-base'>Hola:</p>
+      <h1 class='text-3xl font-bold'>
+        Ale
+      </h1>
+    </div>
+    <div class='border border-gray-400 rounded-full p-2 border-solid'>
+      <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+        <path
+          fill-rule='evenodd'
+          clip-rule='evenodd'
+          d='M20.3257 11.2625C20.7317 11.8705 20.9646 12.575 21 13.3023L20.9734 13.4862C21.004 14.4815 20.6701 15.4543 20.033 16.2264C19.2193 17.1 18.1069 17.6457 16.91 17.7585C13.9617 18.0805 10.9863 18.0805 8.03799 17.7585C6.85854 17.638 5.76557 17.0925 4.96827 16.2264C4.32062 15.4654 3.97675 14.4972 4.00122 13.5037V13.3811C4.05 12.6321 4.30121 11.9096 4.72873 11.2888L4.7997 11.2012C5.24432 10.7034 5.55006 10.1 5.6869 9.45026V8.69736V7.64679C5.81271 7.33051 6.1376 7.13657 6.47989 7.17342C6.82218 7.21027 7.09705 7.46877 7.15079 7.80438V8.67985V9.60785C7.15424 9.63986 7.15424 9.67214 7.15079 9.70415C6.96606 10.6073 6.54382 11.4467 5.92645 12.138C5.6887 12.5117 5.55412 12.9402 5.53608 13.3811V13.5737C5.51638 14.1938 5.72433 14.8001 6.12163 15.2809C6.67247 15.8423 7.40907 16.1902 8.19768 16.2614C11.052 16.5679 13.9315 16.5679 16.7858 16.2614C17.596 16.1881 18.3506 15.8235 18.9062 15.2371C19.284 14.7677 19.4819 14.1818 19.4651 13.5825V13.3811C19.4469 12.9388 19.3157 12.5081 19.0836 12.1292C18.4406 11.4458 17.9935 10.6057 17.7883 9.69539C17.7849 9.66338 17.7849 9.6311 17.7883 9.59909V8.66234V7.78687C17.531 5.14294 14.8606 3.50581 12.5361 3.50581C11.5479 3.50357 10.5759 3.75391 9.7148 4.23245C9.47637 4.37389 9.17884 4.37606 8.93831 4.23812C8.69779 4.10019 8.55241 3.84401 8.55891 3.56957C8.56541 3.29514 8.72276 3.04594 8.96955 2.91925C10.0365 2.32443 11.2397 2.00804 12.4651 2C15.5348 2 18.9772 4.15366 19.3675 7.61177V8.64483V9.41524C19.5008 10.0662 19.807 10.6704 20.2548 11.1662C20.2813 11.1961 20.305 11.2284 20.3257 11.2625ZM12.7987 20.4308C13.3277 20.3531 13.803 20.0723 14.1193 19.6507H14.1283C14.4017 19.3275 14.8913 19.2822 15.2219 19.5495C15.5525 19.8168 15.5988 20.2954 15.3254 20.6186C14.6514 21.4802 13.6087 21.9899 12.4991 22C11.3928 21.9872 10.3539 21.4778 9.68186 20.6186C9.40845 20.2954 9.4548 19.8168 9.78537 19.5495C10.1159 19.2822 10.6056 19.3275 10.879 19.6507C10.9991 19.8076 11.1415 19.9469 11.302 20.0642C11.731 20.3765 12.2698 20.5084 12.7987 20.4308Z'
+          fill='#3C3A36'
+        ></path>
+      </svg>
+    </div>
+  </header>
+  <div class='mt-4'>
+    <h1 class='text-lg font-bold'>Update course</h1>
+    <form class='flex flex-col gap-y-4 mt-4' method='POST' action='/course/{{course._id}}'>
+      <label for='title'>Title</label>
+      <input
+        class='p-4 rounded-xl border border-solid border-gray-400'
+        type='text'
+        name='title'
+        id='title'
+        placeholder='write your title'
+        value='{{course.title}}'
+      />
+      <label for='description'>Description</label>
+      <textarea
+        class='p-4 rounded-xl border border-solid border-gray-400'
+        name='description'
+        id='description'
+        placeholder='write your description'
+      >{{course.description}}</textarea>
+      <label for='duration'>Duration</label>
+      <input
+        class='p-4 rounded-xl border border-solid border-gray-400'
+        type='text'
+        name='duration'
+        id='duration'
+        placeholder='write your duration'
+        value='{{course.duration}}'
+      />
+      <label for='price'>Price</label>
+      <input
+        class='p-4 rounded-xl border border-solid border-gray-400'
+        type='text'
+        name='price'
+        id='price'
+        placeholder='write your price'
+        value='{{course.price}}'
+      />
+      <label for='country'>Country</label>
+      <input
+        class='p-4 rounded-xl border border-solid border-gray-400'
+        type='text'
+        name='country'
+        id='country'
+        placeholder='write your country'
+        value='{{course.country}}'
+      />
+      <label for='image'>Image path</label>
+      <input
+        class='p-4 rounded-xl border border-solid border-gray-400'
+        type='text'
+        name='image'
+        id='image'
+        placeholder='write your image path'
+        value='{{course.image}}'
+      />
+      <button type='submit' class='btn'>Submit</button>
+    </form>
+  </div>
+</div>

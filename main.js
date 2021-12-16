@@ -12,32 +12,29 @@ function stopServer(server) {
   });
 }
 
-function run() {
+async function run() {
   const app = setupApp();
   let httpServer;
 
-  startDB()
-    .then(db => {
-      console.log(`Connected to Mongo! Database name: "${db.connections[0].name}"`);
-    })
-    .then(() => {
-      httpServer = app.listen(port, () => {
-        console.log(`Starting on port ${port}`);
-      });
-    })
-    .catch(e => {
-      console.log('error starting server', e);
+  try {
+    const db = await startDB();
+    console.log(`Connected to Mongo! Database name: "${db.connections[0].name}"`);
+    httpServer = app.listen(port, () => {
+      console.log(`Starting on port ${port}`);
     });
+  } catch (e) {
+    console.log('error starting server', e);
+  }
 
-  function stop() {
-    console.log('stop');
-    stopDB()
-      .then(() => {
-        stopServer(httpServer);
-      })
-      .catch(e => {
-        console.log('error closing db');
-      });
+  async function stop() {
+    console.log('stop server');
+    try {
+      await stopDB();
+
+      stopServer(httpServer);
+    } catch (e) {
+      console.log('error closing db');
+    }
   }
 
   process.on('SIGINT', stop);
