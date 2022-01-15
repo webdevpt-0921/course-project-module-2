@@ -7,7 +7,7 @@ const Favorite = require('../models/favorite');
 function baseRoutes() {
   const router = express.Router();
 
-  router.get('/', async (req, res, next) => {
+  router.get('/', isLoggedIn, async (req, res, next) => {
     const user = req.session.currentUser;
 
     try {

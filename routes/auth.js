@@ -56,7 +56,7 @@ function authRoutes() {
           _id,
           email,
         };
-        res.redirect('/');
+        return res.redirect('/');
       }
       return res.render('auth/login', { errorMessage: 'Password incorrect' });
     } catch (e) {
